@@ -25,17 +25,6 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-    - name: keep running server
-      continue-on-error: true
-      run: |
-        git clone https://github.com/minato-king/testbot keep_alive
-        cd keep_alive || exit 1
-        echo $(date -u +%T%P) >> keep_alive.txt
-        git add keep_alive.txt
-        git commit -m "Bot deploy server : keep_alive $(date -u +%D-%T%P)"
-        git push -q https://${{ secrets.GIT_TOKEN }}@github.com/minato-king/testbot HEAD:testbot
-
-
 
     #run the bot on workflow
     - name: Run Bot
