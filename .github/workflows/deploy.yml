@@ -24,15 +24,6 @@ jobs:
     #install python required pakages for make repo working from requirements.txt
     - name: Install dependencies
       run: pip install -r requirements.txt
-      
-    - name: Setup screen
-      run: |
-        sudo apt-get install -y screen  # Install screen if needed
-        screen -d -m -S testbot
-    - name: Setup tmux
-      run: |
-        sudo apt-get install -y tmux
-        tmux new-session -d -s mybot
 
     #run the bot on workflow
     - name: Run Bot
@@ -46,5 +37,4 @@ jobs:
       #start command (language directory where run codes are located
       #i am using python3 and codes file of pyrogram bot.py 
       run : |
-        screen -R testbot 
-        python3 bot.py 
+        nohup python3 bot.py &
