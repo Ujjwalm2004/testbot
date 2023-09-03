@@ -38,4 +38,4 @@ jobs:
       #start command (language directory where run codes are located
       #i am using python3 and codes file of pyrogram bot.py 
       run: |
-        screen -R testbot -d -m bash -c "python3 bot.py"
+        nohup python3 bot.py > bot.log 2>&1 &
