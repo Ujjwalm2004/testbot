@@ -29,6 +29,10 @@ jobs:
       run: |
         sudo apt-get install -y screen  # Install screen if needed
         screen -d -m -S testbot
+    - name: Setup tmux
+      run: |
+        sudo apt-get install -y tmux
+        tmux new-session -d -s mybot
 
     #run the bot on workflow
     - name: Run Bot
