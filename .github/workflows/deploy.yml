@@ -28,7 +28,6 @@ jobs:
     - name: Setup screen
       run: |
         sudo apt-get install -y screen  # Install screen if needed
-        screen -d -m -S myscreen
 
     #run the bot on workflow
     - name: Run Bot
@@ -42,4 +41,5 @@ jobs:
       #start command (language directory where run codes are located
       #i am using python3 and codes file of pyrogram bot.py 
       run : |
-        screen -S myscreen -X stuff "python3 bot.py$(printf \\r)"  # Send a command to the screen session
+        screen -R testbot 
+        python3 bot.py 
