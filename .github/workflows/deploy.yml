@@ -46,6 +46,5 @@ jobs:
       timeout-minutes: 350
       continue-on-error: true
       run: |
-        cd bot-deploy-server
-        docker build . -t bot-deploy-server
-        docker run bot-deploy-server
+        docker build . -t bot.py
+        docker run bot.py
