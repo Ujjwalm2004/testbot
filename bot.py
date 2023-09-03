@@ -1,5 +1,5 @@
 import os
-from pyrogram import Client, filters
+from pyrogram import Client, idle, filters
 
 api_id = int(os.environ.get("API_ID"))
 api_hash = os.environ.get("API_HASH")
