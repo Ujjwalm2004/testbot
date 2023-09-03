@@ -24,7 +24,7 @@ jobs:
     #install python required pakages for make repo working from requirements.txt
     - name: Install dependencies
       run: pip install -r requirements.txt
-
+      
 
     #run the bot on workflow
     - name: Run Bot
@@ -38,10 +38,4 @@ jobs:
       #start command (language directory where run codes are located
       #i am using python3 and codes file of pyrogram bot.py 
       run: |
-        screen -R testbot
-        python3 bot.py
-      
-
-       
-
-
+        screen -R testbot -d -m bash -c "python3 bot.py"
