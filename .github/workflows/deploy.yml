@@ -9,15 +9,16 @@ on:
 
 jobs:
   deploy:
-    #Run workflow on latest version of Ubuntu operating system(it's the bestest os😁)
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
+    #Run workflow on Ubuntu operating system(it's the bestest os😁)
+    runs-on: ubuntu-20.04
+    timeout-minutes: 350
+    continue-on-error: true
 
 
     steps:
     #Check code from repo
     - name: Checkout code  
-      uses: actions/checkout@v2
+      uses: actions/checkout@main
       
     #setting up Python
     - name: Set up Python
@@ -29,11 +30,13 @@ jobs:
 
     #run the bot on workflow
     - name: Run Bot
+      continue-on-error: true
       #setting Environmental Variables from Github secrets 
       env:
           API_ID: ${{ secrets.API_ID }}
           API_HASH: ${{ secrets.API_HASH }}
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+      
       #start command (language directory where run codes are located
       #i am using python3 and codes file of pyrogram bot.py 
       run: python3 bot.py
