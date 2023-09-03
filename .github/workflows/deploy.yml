@@ -26,8 +26,13 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-      #run the bot on workflow
+    #run the bot on workflow
     - name: Run Bot
+      #setting Environmental Variables from Github secrets 
+      env:
+          API_ID: ${{ secrets.API_ID }}
+          API_HASH: ${{ secrets.API_HASH }}
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       #start command (language directory where run codes are located
       #i am using python3 and codes file of pyrogram bot.py 
       run: python3 bot.py
