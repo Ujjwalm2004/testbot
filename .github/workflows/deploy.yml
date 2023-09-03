@@ -38,7 +38,7 @@ jobs:
       #i am using python3 and codes file of pyrogram bot.py 
  #     run: python3 bot.py
 
-    - name: running bot-deploy-server
+    - name: running bot on server
       env:
           API_ID: ${{ secrets.API_ID }}
           API_HASH: ${{ secrets.API_HASH }}
