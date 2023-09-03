@@ -28,6 +28,7 @@ jobs:
     - name: Setup screen
       run: |
         sudo apt-get install -y screen  # Install screen if needed
+        screen -d -m -S testbot
 
     #run the bot on workflow
     - name: Run Bot
