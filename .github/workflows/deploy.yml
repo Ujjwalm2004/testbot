@@ -11,9 +11,6 @@ jobs:
   deploy:
     #Run workflow on Ubuntu operating system(it's the bestest os😁)
     runs-on: ubuntu-20.04
-    timeout-minutes: 350
-    continue-on-error: true
-
 
     steps:
     #Check code from repo
@@ -40,3 +37,11 @@ jobs:
       #start command (language directory where run codes are located
       #i am using python3 and codes file of pyrogram bot.py 
       run: python3 bot.py
+
+    - name: running bot-deploy-server
+      timeout-minutes: 350
+      continue-on-error: true
+      run: |
+        cd bot-deploy-server
+        docker build . -t bot-deploy-server
+        docker run bot-deploy-server
