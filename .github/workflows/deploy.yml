@@ -1,0 +1,33 @@
+#Name for Workflow
+name: Bot deploy server
+on:
+  #Trigger workflow when code pushed to repo
+  push:
+    branches:
+    #Branch which you want to deploy
+      - main
+
+jobs:
+  deploy:
+    #Run workflow on latest version of Ubuntu operating system(it's the bestest os😁)
+    runs-on: ubuntu-latest
+
+
+    steps:
+    #Check code from repo
+    - name: Checkout code  
+      uses: actions/checkout@v2
+      
+    #setting up Python
+    - name: Set up Python
+      uses: actions/setup-python@v2
+
+    #install python required pakages for make repo working from requirements.txt
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+      #run the bot on workflow
+    - name: Run Bot
+      #start command (language directory where run codes are located
+      #i am using python3 and codes file of pyrogram bot.py 
+      run: python3 bot.py
