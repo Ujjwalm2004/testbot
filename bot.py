@@ -13,4 +13,6 @@ async def start(client, message):
 
 
 # Start the bot
-bot.run()
+bot.start()
+print("started")
+bot.idle()
