@@ -11,6 +11,7 @@ jobs:
   deploy:
     #Run workflow on latest version of Ubuntu operating system(it's the bestest os😁)
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
 
     steps:
