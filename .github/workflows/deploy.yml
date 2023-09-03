@@ -46,4 +46,4 @@ jobs:
       timeout-minutes: 350
       continue-on-error: true
       run: |
-        docker run python3 bot.py
+        python3 bot.py
