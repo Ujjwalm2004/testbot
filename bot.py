@@ -12,7 +12,9 @@ async def start(client, message):
     await message.reply_text("Hello, i am test bot!")
 
 
-# Start the bot
-bot.start()
-print("started")
-bot.idle()
+#run the bot
+if __name__ == '__main__':
+    bot.run()
+#bot.start()
+#print("started")
+#idle()
