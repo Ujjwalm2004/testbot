@@ -66,4 +66,4 @@ jobs:
         git commit -m "Add text to file.txt"
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
