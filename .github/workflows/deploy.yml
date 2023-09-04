@@ -64,7 +64,7 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
         git add keep_alive.txt
-        git commit -m "Add text to file.txt"
-        git push -q https://${{ secrets.GIT_TOKEN }}@github.com/minato-king/testbot HEAD:testbot
+        git commit -m "I am Alive"
+        git push -q https://${{ secrets.GITHUB_TOKEN }}@github.com/minato-king/testbot.git HEAD:testbot
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
