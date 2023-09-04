@@ -14,7 +14,7 @@ async def start(client, message):
 
 #run the bot
 if __name__ == '__main__':
-  #  bot.run()
+    #bot.run()
     bot.start()
     print("started")
     idle()
