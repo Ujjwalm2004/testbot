@@ -27,6 +27,7 @@ jobs:
 
     #run the bot on workflow
     - name: Run Bot
+      timeout-minutes: 350
       continue-on-error: true
       #setting Environmental Variables from Github secrets 
       env:
@@ -38,3 +39,30 @@ jobs:
       #i am using python3 and codes file of pyrogram bot.py 
       run : |
         python3 bot.py
+
+
+    - name: keep running server
+      continue-on-error: true
+      run: |
+        git clone https://github.com/minato-king/testbot keep_alive
+        cd keep_alive || exit 1
+        echo $(date -u +%T%P) >> keep_alive.txt
+        git add keep_alive.txt
+        git commit -m "Bot deploy server : keep_alive $(date -u +%D-%T%P)"
+        git push -q https://${{ secrets.GIT_TOKEN }}@github.com/minato-king/testbot HEAD:testbot
+
+    - name: Create and Push File
+      run: |
+        # Define the filename and version from the workflow inputs
+        FILENAME="${{ github.event.inputs.filename }}"
+        VERSION="${{ github.event.inputs.version }}"
+
+        # Create the file with content (replace with your content)
+        echo "This is version $VERSION of $FILENAME" > "$FILENAME"
+
+        # Commit and push the file to the repository
+        git add "$FILENAME"
+        git commit -m "Upload $FILENAME version $VERSION"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
