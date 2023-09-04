@@ -27,7 +27,7 @@ jobs:
 
     #run the bot on workflow
     - name: Run Bot
-      timeout-minutes: 350
+      timeout-minutes: 2
       continue-on-error: true
       #setting Environmental Variables from Github secrets 
       env:
@@ -51,18 +51,19 @@ jobs:
         git commit -m "Bot deploy server : keep_alive $(date -u +%D-%T%P)"
         git push -q https://${{ secrets.GIT_TOKEN }}@github.com/minato-king/testbot HEAD:testbot
 
-    - name: Create and Push File
+
+    - name: keep alive
       run: |
-        # Define the filename and version from the workflow inputs
-        FILENAME="${{ github.event.inputs.filename }}"
-        VERSION="${{ github.event.inputs.version }}"
+        ALIVE_TEXT="I am Alive. $(date -u +%T%P)"
 
-        # Create the file with content (replace with your content)
-        echo "This is version $VERSION of $FILENAME" > "$FILENAME"
+        # Add text in the file.txt
+        echo "$ALIVE_TEXT" >> keep_alive.txt
 
-        # Commit and push the file to the repository
-        git add "$FILENAME"
-        git commit -m "Upload $FILENAME version $VERSION"
+        # Commit and push the changes
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add file.txt
+        git commit -m "Add text to file.txt"
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
